@@ -10,16 +10,13 @@ import UIKit
 
 class CarolselCollectionView: UICollectionView,UICollectionViewDelegate
 ,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate {
-   
     var defaultImageName : String = "" {
-        
         didSet {
             if defaultImageName != "" {
                 defaultImage = UIImage(named: defaultImageName)
             }
         }
     }
-
     fileprivate var defaultImage : UIImage?
     var viewModel = CarouselViewModel()
     let cellIdentifer = CarolselCell.cellIdentifier
@@ -49,14 +46,13 @@ class CarolselCollectionView: UICollectionView,UICollectionViewDelegate
             self.pager.currentPage = 0
         }
     }
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.x == 0 {
-            self.scrollToItem(at: IndexPath(item: viewModel.virtualCount - 2 , section: 0), at: UICollectionViewScrollPosition.centeredHorizontally, animated: false)
-        }else if self.contentOffset.x == self.frame.width * CGFloat(viewModel.virtualCount - 1) {
-            self.scrollToItem(at: IndexPath(item: 1, section: 0), at: UICollectionViewScrollPosition.centeredHorizontally, animated: false)
-        }
-    }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        if scrollView.contentOffset.x <= 0 {
+            scrollView.contentOffset =   CGPoint(x:self.frame.width * CGFloat(viewModel.virtualCount - 2),y:0)
+        }else if self.contentOffset.x >= self.frame.width * CGFloat(viewModel.virtualCount - 1) {
+            scrollView.contentOffset =  CGPoint(x:self.frame.width ,y:0)
+        }
         let rounderdNumber = Int(round(contentOffset.x / self.frame.width))
         switch rounderdNumber {
         case 0:
@@ -73,7 +69,7 @@ class CarolselCollectionView: UICollectionView,UICollectionViewDelegate
     func sharedInitilization (){
         self.delegate = self
         self.dataSource = self
-        self.isPagingEnabled = true
+//        self.isPagingEnabled = true
         self.showsHorizontalScrollIndicator = false
         self.backgroundColor = UIColor.clear
         self.register(CarolselCell.self, forCellWithReuseIdentifier: cellIdentifer)
@@ -92,7 +88,6 @@ class CarolselCollectionView: UICollectionView,UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.frame.width, height: self.frame.height)
     }

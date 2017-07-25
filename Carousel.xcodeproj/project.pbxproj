@@ -14,6 +14,12 @@
 		BE9584941F2329FF0075D9BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE9584921F2329FF0075D9BA /* LaunchScreen.storyboard */; };
 		BE95849F1F2329FF0075D9BA /* CarouselTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE95849E1F2329FF0075D9BA /* CarouselTests.swift */; };
 		BE9584AA1F2329FF0075D9BA /* CarouselUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9584A91F2329FF0075D9BA /* CarouselUITests.swift */; };
+		BE9584BC1F232A280075D9BA /* Carolsel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9584B71F232A280075D9BA /* Carolsel.swift */; };
+		BE9584BD1F232A280075D9BA /* CarolselAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9584B81F232A280075D9BA /* CarolselAPI.swift */; };
+		BE9584BE1F232A280075D9BA /* CarolselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9584B91F232A280075D9BA /* CarolselCell.swift */; };
+		BE9584BF1F232A280075D9BA /* CarolselCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9584BA1F232A280075D9BA /* CarolselCollectionView.swift */; };
+		BE9584C01F232A280075D9BA /* CarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9584BB1F232A280075D9BA /* CarouselViewModel.swift */; };
+		BE9584C21F232CCE0075D9BA /* defaultImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BE9584C11F232CCE0075D9BA /* defaultImage.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +53,12 @@
 		BE9584A51F2329FF0075D9BA /* CarouselUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarouselUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE9584A91F2329FF0075D9BA /* CarouselUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselUITests.swift; sourceTree = "<group>"; };
 		BE9584AB1F2329FF0075D9BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE9584B71F232A280075D9BA /* Carolsel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Carolsel.swift; sourceTree = "<group>"; };
+		BE9584B81F232A280075D9BA /* CarolselAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarolselAPI.swift; sourceTree = "<group>"; };
+		BE9584B91F232A280075D9BA /* CarolselCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarolselCell.swift; sourceTree = "<group>"; };
+		BE9584BA1F232A280075D9BA /* CarolselCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarolselCollectionView.swift; sourceTree = "<group>"; };
+		BE9584BB1F232A280075D9BA /* CarouselViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselViewModel.swift; sourceTree = "<group>"; };
+		BE9584C11F232CCE0075D9BA /* defaultImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = defaultImage.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +109,12 @@
 		BE9584881F2329FF0075D9BA /* Carousel */ = {
 			isa = PBXGroup;
 			children = (
+				BE9584C11F232CCE0075D9BA /* defaultImage.jpg */,
+				BE9584B71F232A280075D9BA /* Carolsel.swift */,
+				BE9584B81F232A280075D9BA /* CarolselAPI.swift */,
+				BE9584B91F232A280075D9BA /* CarolselCell.swift */,
+				BE9584BA1F232A280075D9BA /* CarolselCollectionView.swift */,
+				BE9584BB1F232A280075D9BA /* CarouselViewModel.swift */,
 				BE9584891F2329FF0075D9BA /* AppDelegate.swift */,
 				BE95848B1F2329FF0075D9BA /* ViewController.swift */,
 				BE95848D1F2329FF0075D9BA /* Main.storyboard */,
@@ -238,6 +256,7 @@
 				BE9584941F2329FF0075D9BA /* LaunchScreen.storyboard in Resources */,
 				BE9584911F2329FF0075D9BA /* Assets.xcassets in Resources */,
 				BE95848F1F2329FF0075D9BA /* Main.storyboard in Resources */,
+				BE9584C21F232CCE0075D9BA /* defaultImage.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,8 +281,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE9584BC1F232A280075D9BA /* Carolsel.swift in Sources */,
+				BE9584C01F232A280075D9BA /* CarouselViewModel.swift in Sources */,
+				BE9584BF1F232A280075D9BA /* CarolselCollectionView.swift in Sources */,
 				BE95848C1F2329FF0075D9BA /* ViewController.swift in Sources */,
 				BE95848A1F2329FF0075D9BA /* AppDelegate.swift in Sources */,
+				BE9584BD1F232A280075D9BA /* CarolselAPI.swift in Sources */,
+				BE9584BE1F232A280075D9BA /* CarolselCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +538,7 @@
 				BE9584B01F2329FF0075D9BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BE9584B11F2329FF0075D9BA /* Build configuration list for PBXNativeTarget "CarouselTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +547,7 @@
 				BE9584B31F2329FF0075D9BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BE9584B41F2329FF0075D9BA /* Build configuration list for PBXNativeTarget "CarouselUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +556,7 @@
 				BE9584B61F2329FF0075D9BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

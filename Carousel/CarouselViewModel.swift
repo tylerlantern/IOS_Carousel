@@ -11,47 +11,54 @@ class CarouselViewModel: NSObject {
     var modelCacheImageData = Dictionary<Int,UIImage>()
     var collectionView : UICollectionView?
     var defaultImage : UIImage?
-    var modelURLForImage :  [String]! {
+    var modelURLForImage :  [String]?  {
         didSet {
-            prioritizeLoadLastImageFirst()
+            if modelURLForImage != nil {
+                prioritizeLoadLastImageFirst()
+            }
         }
     }
     fileprivate var lastIndex : Int {
         get {
-            return modelURLForImage.count - 1
+            return modelURLForImage == nil ? 0  : modelURLForImage!.count - 1
         }
     }
     var virtualCount : Int {
         get {
-            return modelURLForImage.count + 2
+            return modelURLForImage == nil ? 0  : modelURLForImage!.count + 2
         }
     }
     func prioritizeLoadLastImageFirst() {
-        let lastIndex = modelURLForImage.count - 1
-        _ = api.loadImage(imagePath: modelURLForImage[lastIndex]) { (image, error) in
+        let lastIndex = modelURLForImage!.count - 1
+        _ = api.loadImage(imagePath: modelURLForImage![lastIndex]) { (image, error) in
             self.modelCacheImageData[lastIndex] = image
+            for indexPath in self.collectionView!.indexPathsForVisibleItems.filter({ (indexPath) -> Bool in
+                return (indexPath.item == 0 || indexPath.item == self.lastIndex + 1 ) ? true  : false
+            }) {
+                let cell = self.collectionView?.cellForItem(at: indexPath) as? CarolselCell
+                cell?.imv_forShowing.image = self.modelCacheImageData[lastIndex]
+            }
         }
     }
     func bindDataToCell(cell : CarolselCell ,indexPath : IndexPath) {
-        let lastIndex = modelURLForImage.count - 1
-        if indexPath.item == 0 {
-            cell.imv_forShowing.image = modelCacheImageData[lastIndex]
-            
-        }else if indexPath.item == modelURLForImage.count + 1{
-            cell.imv_forShowing.image = modelCacheImageData[0]
+        cell.label.text = String(indexPath.item)
+        var centainIndex : Int!
+        switch indexPath.item {
+        case 0 :
+            centainIndex = lastIndex
+        case virtualCount - 1:
+            centainIndex = 0
+        default:
+            centainIndex = indexPath.item - 1
+        }
+        if modelCacheImageData[centainIndex] == nil {
+            cell.imv_forShowing.image  =  defaultImage
+            cell.session = api.loadImage(imagePath: modelURLForImage![centainIndex ], completion: { (image, error) in
+                self.modelCacheImageData[centainIndex] = image
+                cell.imv_forShowing.image = image
+            })
         }else {
-            
-            let centainIndexPath = indexPath.item - 1
-            
-            if modelCacheImageData[centainIndexPath] == nil {
-                cell.imv_forShowing.image  =  defaultImage
-                cell.session = api.loadImage(imagePath: modelURLForImage[centainIndexPath ], completion: { (image, error) in
-                    self.modelCacheImageData[centainIndexPath] = image
-                })
-            }else {
-                cell.imv_forShowing.image = modelCacheImageData[centainIndexPath]
-            }
-            
+            cell.imv_forShowing.image = modelCacheImageData[centainIndex]
         }
     }
 }

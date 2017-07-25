@@ -46,7 +46,6 @@ class Carolsel: UIControl {
         self.addSubview(collectionView)
         self.addSubview(pager)
         
-        
         let collectionViewTopAnchor = NSLayoutConstraint(item: collectionView
             , attribute: .top , relatedBy: .equal , toItem: self, attribute: .top, multiplier: 1, constant: 0)
         let collectionViewTrailingAnchor = NSLayoutConstraint(item: collectionView
@@ -55,18 +54,17 @@ class Carolsel: UIControl {
             , attribute: .bottom , relatedBy: .equal , toItem: self, attribute: .bottom, multiplier: 1, constant: 1)
         let collectionViewLeftAnchor = NSLayoutConstraint(item: collectionView
             , attribute: .leading , relatedBy: .equal , toItem: self, attribute: .leading, multiplier: 1, constant: 0)
-        
         let pagerCenterXConstraint = NSLayoutConstraint(item: pager, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0)
         let pagerVerticalSpacing = NSLayoutConstraint(item: pager, attribute: .bottom  , relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0)
-        
         NSLayoutConstraint.activate([collectionViewTopAnchor,collectionViewTrailingAnchor,collectionViewBottomAnchor,collectionViewLeftAnchor,pagerCenterXConstraint,pagerVerticalSpacing])
     }
-//    override func prepareForInterfaceBuilder() {
-//        super.prepareForInterfaceBuilder()
-//        pager.numberOfPages = 3
-//        pager.pageIndicatorTintColor = UIColor.black
-//        pager.currentPageIndicatorTintColor = UIColor.darkGray
-//    }
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        pager.numberOfPages = 3
+        pager.pageIndicatorTintColor = UIColor.black
+        collectionView.backgroundColor = UIColor.lightGray
+        pager.currentPageIndicatorTintColor = UIColor.darkGray
+    }
     /*
      // Only override draw() if you perform custom drawing.
      // An empty implementation adversely affects performance during animation.

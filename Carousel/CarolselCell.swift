@@ -42,7 +42,9 @@ class CarolselCell: UICollectionViewCell {
     }
     
     func sharedInitilization() {
-        
+//        self.backgroundColor = UIColor.black
+//        self.layer.borderColor = UIColor.blue.cgColor
+//        self.layer.borderWidth = 10.0
         self.contentView.addSubview(imv_forShowing)
         let topAnchor = NSLayoutConstraint(item: imv_forShowing
             , attribute: .top , relatedBy: .equal , toItem: self, attribute: .top, multiplier: 1, constant: 0)
