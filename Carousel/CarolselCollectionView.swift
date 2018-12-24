@@ -69,7 +69,7 @@ class CarolselCollectionView: UICollectionView,UICollectionViewDelegate
     func sharedInitilization (){
         self.delegate = self
         self.dataSource = self
-//        self.isPagingEnabled = true
+        self.isPagingEnabled = true
         self.showsHorizontalScrollIndicator = false
         self.backgroundColor = UIColor.clear
         self.register(CarolselCell.self, forCellWithReuseIdentifier: cellIdentifer)
